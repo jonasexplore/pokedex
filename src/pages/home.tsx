@@ -2,7 +2,6 @@ import styled from "styled-components";
 import CardList from "../components/CardList";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
-import { DataProvider } from "../contexts/DataContext";
 
 const ContainerFlex = styled(Container)`
   display: flex;
@@ -15,12 +14,12 @@ const ContainerFlex = styled(Container)`
 
 const Home = () => {
   return (
-    <DataProvider>
+    <>
       <Navbar />
       <ContainerFlex>
         <CardList />
       </ContainerFlex>
-    </DataProvider>
+    </>
   );
 };
 
