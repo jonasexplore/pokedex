@@ -1,48 +1,54 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { DataFetchResponse } from "../interfaces/DataFetch";
+import { Pokemon } from "../interfaces/Pokemon";
 
 interface DataContextInterface {
-  pokemons: Pokemon[];
-  filterPokemons: (name: string) => void;
-}
-
-interface Pokemon {
-  name: string;
-  url: string;
+  filteredPokemons: DataFetchResponse[];
+  setFilterPokemons: (name: string) => void;
 }
 
 interface DataProviderInterface {
   children: ReactNode;
 }
 
-export const dataContext = createContext({} as DataContextInterface);
+export const DataContext = createContext({} as DataContextInterface);
 
 export const DataProvider = ({ children }: DataProviderInterface) => {
-  const [pokemons, setPokemons] = useState([] as Pokemon[]);
+  const [pokemons, setPokemons] = useState([] as DataFetchResponse[]);
+  const [searchField, setSearchField] = useState("");
 
-  const filterPokemons = (name: string) => {
-    const data = pokemons;
-    const filter = new RegExp(name, "g");
-    const filtered = data.filter(
-      (pokemon) => (pokemon.name.match(filter) || name.length == 0) && pokemon
-    );
-    setPokemons(filtered);
+  const setFilterPokemons = (name: string) => {
+    setSearchField(name);
   };
+
+  const filteredPokemons = pokemons.filter((pokemon) => {
+    return pokemon.name.toLowerCase().includes(searchField.toLowerCase());
+  });
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(
+      const response: { results: Pokemon[] } = await fetch(
         "https://pokeapi.co/api/v2/pokemon?limit=20&offset=20"
       ).then((data) => data.json());
 
-      setPokemons(res.results);
+      let newPokemon: DataFetchResponse[] = [];
+      response.results.map(async (item) => {
+        const res = await fetch(item.url).then((data) => data.json());
+        newPokemon.push(res);
+      });
+      setPokemons(newPokemon);
     };
-
     getData();
   }, []);
 
   return (
-    <dataContext.Provider value={{ pokemons, filterPokemons }}>
+    <DataContext.Provider
+      value={{
+        filteredPokemons,
+        setFilterPokemons,
+      }}
+    >
       {children}
-    </dataContext.Provider>
+    </DataContext.Provider>
   );
 };
