@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { dataContext } from "../contexts/DataContext";
+import { DataContext } from "../contexts/DataContext";
 
 const Container = styled.div`
   position: relative;
@@ -24,15 +24,12 @@ const Input = styled.input`
 
 const SearchField = () => {
   const [searchValue, setSearchValue] = useState("");
-  const { filterPokemons } = useContext(dataContext);
-
-  const handlerClick = (event) => {
-    filterPokemons(searchValue);
-  };
+  const { setFilterPokemons } = useContext(DataContext);
 
   const handlerChange = (event) => {
-    filterPokemons(event.target.value);
-    setSearchValue(event.target.value);
+    const pokemonName = event.target.value;
+    setFilterPokemons(pokemonName);
+    setSearchValue(pokemonName);
   };
 
   return (
@@ -42,7 +39,7 @@ const SearchField = () => {
         value={searchValue}
         onChange={handlerChange}
       />
-      <img src="icons/search.svg" onClick={(event) => handlerClick(event)} />
+      <img src="icons/search.svg" />
     </Container>
   );
 };
