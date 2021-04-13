@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Link from "next/link";
 import ExitButton from "./Buttons/ExitButton";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { DataContext } from "../contexts/DataContext";
 
 const Container = styled.div`
   background: var(--yellow);
@@ -27,7 +29,7 @@ const Nav = styled.nav`
 
     li a {
       padding: 0 1rem;
-      padding-bottom: 11px;
+      padding-bottom: 10px;
       transition: font-weight, border-bottom 0.2s;
       border-bottom: 3px solid var(--yellow);
     }
@@ -56,17 +58,20 @@ const Item = styled.li`
 `;
 
 const CurrentFavorite = styled.span`
-  width: 23px;
+  padding: 0 0.3rem;
+  font-size: 0.75rem;
   text-align: center;
   border-radius: 50%;
   background: var(--black);
   color: var(--white);
   position: absolute;
-  left: 90%;
+  left: 87%;
+  top: 15%;
 `;
 
 const Navbar = () => {
   const router = useRouter();
+  const { countFavorited } = useContext(DataContext);
   return (
     <Container>
       <Nav>
@@ -76,7 +81,7 @@ const Navbar = () => {
             className={`${router.asPath == "/favorites" && "active"} favorite`}
           >
             <Link href="/favorites">Favoritos</Link>
-            <CurrentFavorite>1</CurrentFavorite>
+            <CurrentFavorite>{countFavorited}</CurrentFavorite>
           </Item>
           <Item className={`${router.asPath == "/search" && "active"}`}>
             <Link href="/search">Procurar</Link>

@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { ModalContext } from "../../contexts/ModalContext";
 import { DataFetchResponse } from "../../interfaces/DataFetch";
 import FavoriteButton from "../Buttons/FavoriteButton";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import Category from "../Category";
-import CardLoader from "../Loaders/CardLoader";
 
 const Container = styled.div`
   background: var(--white);
@@ -32,29 +31,24 @@ const Container = styled.div`
 `;
 
 const Image = styled.div`
+  display: flex;
   width: 100%;
-  img {
-    margin: 0 auto;
-  }
+  align-items: center;
+  justify-content: center;
 `;
 
 const Card = (props: DataFetchResponse) => {
-  // const [isLoading, setIsLoading] = useState(true);
-
   const { setShowModal } = useContext(ModalContext);
 
-  // if (isLoading) {
-  //   return <CardLoader />;
-  // }
-
   const handlerClickCard = () => {
+    console.log(props);
     setShowModal(props);
   };
 
   return (
     <>
       <Container>
-        <FavoriteButton />
+        <FavoriteButton favorited={props.isFavorite} id={props.id} />
         <Image>
           <img src={props.sprites.front_default} />
         </Image>

@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
-import { ModalContext } from "../contexts/ModalContext";
-import PrimaryButton from "./Buttons/PrimaryButton";
-import Category from "./Category";
-import ProgressBar from "./ProgessBar";
+import { DataContext } from "../../contexts/DataContext";
+import { ModalContext } from "../../contexts/ModalContext";
+import PrimaryButton from "../Buttons/PrimaryButton";
+import RemoveFavoriteButton from "../Buttons/RemoveFavoriteButton";
+import Category from "../Category";
+import ProgressBar from "../ProgessBar";
 
 const ContainerFixed = styled.div`
   background: rgba(255, 255, 255, 0.85);
@@ -22,8 +24,12 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
 
-  span {
+  & > span {
     cursor: pointer;
+  }
+
+  & > h3 {
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -37,26 +43,51 @@ const Container = styled.div`
 
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
 
-  ul {
+  & > h2 {
+    margin: 1rem 0;
+  }
+
+  & > ul {
     list-style-type: none;
   }
 
-  li {
+  & > ul > li {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  p {
+  & > p {
     font-weight: 600;
+  }
+
+  & > div > img {
+    border-radius: 0.5rem;
+    background: rgb(245, 247, 250);
+    margin-left: 0.5rem;
+  }
+
+  & > div > img:first-child {
+    margin-left: 0;
+  }
+
+  & > button {
+    width: 100%;
   }
 `;
 
 const Details = () => {
   const { setHideModal, selectedPokemon } = useContext(ModalContext);
+  const { setFavoritedPokemon } = useContext(DataContext);
+  const [isFavorite, setIsFavorite] = useState(selectedPokemon.isFavorite);
 
   const handlerClickClose = () => {
     setHideModal();
+  };
+
+  const handleClickAddFavorite = () => {
+    setFavoritedPokemon(selectedPokemon.id);
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -113,7 +144,15 @@ const Details = () => {
             />
           </li>
         </ul>
-        <PrimaryButton>Adcionar aos favoritos</PrimaryButton>
+        {isFavorite ? (
+          <RemoveFavoriteButton onClick={handleClickAddFavorite}>
+            Remover dos favoritos
+          </RemoveFavoriteButton>
+        ) : (
+          <PrimaryButton onClick={handleClickAddFavorite}>
+            Adcionar aos favoritos
+          </PrimaryButton>
+        )}
       </Container>
     </ContainerFixed>
   );
