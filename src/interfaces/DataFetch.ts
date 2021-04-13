@@ -6,6 +6,7 @@ export interface DataFetchResponse {
   stats: Stats[];
   weight: number;
   height: number;
+  isFavorite: Boolean;
 }
 
 interface Stats {
@@ -21,6 +22,6 @@ export interface TypePokemon {
   type: TypeProps;
 }
 
-interface TypeProps {
+export interface TypeProps {
   name: string;
 }
