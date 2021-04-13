@@ -1,6 +1,7 @@
 import "../styles/GlobalStyled.css";
-import { DataProvider } from "../contexts/DataContext";
 import { ModalProvider } from "../contexts/ModalContext";
+import { DataProvider } from "../contexts/DataContext";
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,7 +9,7 @@ function MyApp({ Component, pageProps }) {
       <ModalProvider>
         <Component {...pageProps} />
       </ModalProvider>
-    </DataProvider>
+      </DataProvider>
   );
 }
 

@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import styled from "styled-components";
-import CardList from "../components/CardList";
+import CardList from "../components/Cards/CardList";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import SearchField from "../components/SearchField";
+import { DataContext } from "../contexts/DataContext";
 
 const ContainerFlex = styled(Container)`
   display: flex;
@@ -14,12 +16,13 @@ const ContainerFlex = styled(Container)`
 `;
 
 const Search = () => {
+  const { filteredPokemons } = useContext(DataContext);
   return (
     <>
       <Navbar />
       <ContainerFlex>
         <SearchField />
-        <CardList />
+        <CardList pokemonsList={filteredPokemons} />
       </ContainerFlex>
     </>
   );

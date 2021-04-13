@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import styled from "styled-components";
-import CardList from "../components/CardList";
+import CardList from "../components/Cards/CardList";
+import CategoryList from "../components/CategoryList";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
+import { DataContext } from "../contexts/DataContext";
 
 const ContainerFlex = styled(Container)`
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 
@@ -13,11 +16,13 @@ const ContainerFlex = styled(Container)`
 `;
 
 const Home = () => {
+  const { filteredByCategory } = useContext(DataContext);
   return (
     <>
       <Navbar />
       <ContainerFlex>
-        <CardList />
+        <CategoryList />
+        <CardList pokemonsList={filteredByCategory} />
       </ContainerFlex>
     </>
   );

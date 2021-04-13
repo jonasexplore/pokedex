@@ -1,23 +1,49 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import CardList from "../components/Cards/CardList";
+import Container from "../components/Container";
 import Navbar from "../components/Navbar";
+import { DataContext } from "../contexts/DataContext";
 
-const Container = styled.div`
+const ContentCenter = styled(Container)`
   display: flex;
   flex-flow: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+`;
+
+const Content = styled(Container)`
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+
+const Description = styled.h2`
+  margin-top: 2rem;
+  color: var(--black);
 `;
 
 const Favorites = () => {
+  const { filteredByFavorited, countFavorited } = useContext(DataContext);
   return (
-    <div>
+    <>
       <Navbar />
-      <Container>
-        <img src="images/Astronaut.png" alt="" />
-        <h2>Está meio vazio por aqui!</h2>
-        <p>Procure por pokémons para adicioná-los aos seus favoritos.</p>
-      </Container>
-    </div>
+      {!filteredByFavorited.length ? (
+        <ContentCenter>
+          <img src="images/Astronaut.png" alt="" />
+          <h2>Está meio vazio por aqui!</h2>
+          <p>Procure por pokémons para adicioná-los aos seus favoritos.</p>
+        </ContentCenter>
+      ) : (
+        <Content>
+          <Description>{`Olá, você tem ${countFavorited
+            .toString()
+            .padStart(2, "0")} pokémon salvo!`}</Description>
+          <CardList pokemonsList={filteredByFavorited} />
+        </Content>
+      )}
+    </>
   );
 };
 
