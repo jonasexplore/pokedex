@@ -4,7 +4,15 @@ import { Pokemon } from "../interfaces/Pokemon";
 
 interface DataContextInterface {
   filteredPokemons: DataFetchResponse[];
+  filteredByCategory: DataFetchResponse[];
+  filteredByFavorited: DataFetchResponse[];
+  countFavorited: number;
+  selectedCategory: String;
+  getFilterFavorited: () => DataFetchResponse[];
+  setFavoritedPokemon: (id: number) => void;
+  selectCategory: (name: string) => void;
   setFilterPokemons: (name: string) => void;
+  getCategories: () => String[];
 }
 
 interface DataProviderInterface {
@@ -15,15 +23,66 @@ export const DataContext = createContext({} as DataContextInterface);
 
 export const DataProvider = ({ children }: DataProviderInterface) => {
   const [pokemons, setPokemons] = useState([] as DataFetchResponse[]);
-  const [searchField, setSearchField] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+
+  const [filteredPokemons, setFilteredPokemons] = useState(
+    [] as DataFetchResponse[]
+  );
+  const [filteredByCategory, setFilteredByCatergory] = useState(
+    [] as DataFetchResponse[]
+  );
+  const [filteredByFavorited, setFilteredByFavorited] = useState(
+    [] as DataFetchResponse[]
+  );
 
   const setFilterPokemons = (name: string) => {
-    setSearchField(name);
+    setFilteredPokemons(
+      pokemons.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(name.toLowerCase())
+      )
+    );
   };
 
-  const filteredPokemons = pokemons.filter((pokemon) => {
-    return pokemon.name.toLowerCase().includes(searchField.toLowerCase());
-  });
+  const getFilterFavorited = (): DataFetchResponse[] => {
+    const filtered = pokemons.filter((item) => item.isFavorite === true);
+    return filtered;
+  };
+
+  const countFavorited = getFilterFavorited().length;
+
+  const setFavoritedPokemon = (id: number) => {
+    const foundPokemonIndex = pokemons.findIndex(
+      (pokemon) => pokemon.id === id
+    );
+    let changePokemon = pokemons;
+
+    const isFavorited = changePokemon[foundPokemonIndex].isFavorite;
+    changePokemon[foundPokemonIndex].isFavorite = !isFavorited;
+
+    setFilteredByFavorited(getFilterFavorited());
+  };
+
+  const selectCategory = (name: string) => {
+    setSelectedCategory(name);
+
+    name === "Todos"
+      ? setFilteredByCatergory(pokemons)
+      : setFilteredByCatergory(
+          pokemons.filter((pokemon) =>
+            pokemon.types.find((item) => item.type.name == name && pokemon)
+          )
+        );
+  };
+
+  const getCategories = (): String[] => {
+    let categoryList: String[] = [];
+    pokemons.forEach((pokemon) => {
+      pokemon.types.forEach((item) => {
+        categoryList.push(item.type.name);
+      });
+    });
+    return categoryList;
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -32,10 +91,13 @@ export const DataProvider = ({ children }: DataProviderInterface) => {
       ).then((data) => data.json());
 
       let newPokemon: DataFetchResponse[] = [];
+
       response.results.map(async (item) => {
         const res = await fetch(item.url).then((data) => data.json());
-        newPokemon.push(res);
+        newPokemon.push({ ...res, isFavorite: false });
       });
+
+      setFilteredPokemons(newPokemon);
       setPokemons(newPokemon);
     };
     getData();
@@ -45,7 +107,15 @@ export const DataProvider = ({ children }: DataProviderInterface) => {
     <DataContext.Provider
       value={{
         filteredPokemons,
+        filteredByCategory,
+        filteredByFavorited,
+        selectedCategory,
+        countFavorited,
+        getFilterFavorited,
+        setFavoritedPokemon,
+        selectCategory,
         setFilterPokemons,
+        getCategories,
       }}
     >
       {children}
