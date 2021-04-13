@@ -18,6 +18,7 @@
     "strict": true,
     "target": "esnext"
   },
+  "files": ["src/styles/styled.d.ts"],
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx", "src/pages/_document.jsx"]
 }

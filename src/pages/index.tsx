@@ -36,7 +36,7 @@ const SectionLogin = styled.section`
 const H1 = styled.h1`
   font-family: "Poppins";
   font-size: 3rem;
-  color: #1e1e1f;
+  color: ${(props) => props.theme.colors.secundary};
 `;
 
 const Form = styled.form`
