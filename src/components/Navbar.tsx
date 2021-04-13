@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { DataContext } from "../contexts/DataContext";
 
 const Container = styled.div`
-  background: var(--yellow);
+  background: ${(props) => props.theme.colors.primary};
   max-width: 100%;
 `;
 
@@ -31,10 +31,10 @@ const Nav = styled.nav`
       padding: 0 1rem;
       padding-bottom: 10px;
       transition: font-weight, border-bottom 0.2s;
-      border-bottom: 3px solid var(--yellow);
+      border-bottom: 3px solid ${(props) => props.theme.colors.primary};
     }
     li a:hover {
-      border-bottom: 3px solid var(--black);
+      border-bottom: 3px solid ${(props) => props.theme.colors.secundary};
     }
   }
 `;
@@ -44,9 +44,9 @@ const Item = styled.li`
   margin-left: 1rem;
   &.${`active`} {
     a {
-      color: var(--black);
+      color: ${(props) => props.theme.colors.secundary};
       font-weight: 600;
-      border-bottom: 3px solid var(--black);
+      border-bottom: 3px solid ${(props) => props.theme.colors.secundary};
     }
   }
   &.${`favorite`} {
@@ -62,8 +62,8 @@ const CurrentFavorite = styled.span`
   font-size: 0.75rem;
   text-align: center;
   border-radius: 50%;
-  background: var(--black);
-  color: var(--white);
+  background: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.text};
   position: absolute;
   left: 87%;
   top: 15%;

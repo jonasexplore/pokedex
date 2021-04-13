@@ -5,8 +5,9 @@ const Container = styled.div`
   height: 8px;
   background: #f3f3f3;
 
-  margin: 1rem;
+  border-radius: 1rem 1rem;
 
+  margin: 1rem;
   display: flex;
   align-items: center;
 `;
@@ -19,6 +20,7 @@ const Title = styled.p`
 const Porcent = styled.div`
   background: var(--yellow);
   height: 8px;
+  border-radius: 1rem 1rem;
 `;
 
 interface ProgressBarProps {

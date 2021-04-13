@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { ModalContext } from "../../contexts/ModalContext";
 import { DataFetchResponse } from "../../interfaces/DataFetch";
@@ -7,7 +7,7 @@ import PrimaryButton from "../Buttons/PrimaryButton";
 import Category from "../Category";
 
 const Container = styled.div`
-  background: var(--white);
+  background: ${(props) => props.theme.colors.card};
   border-radius: 0.5rem;
   margin-right: 2rem;
   margin-top: 2rem;
@@ -24,7 +24,7 @@ const Container = styled.div`
 
   & > h3 {
     font-weight: 600;
-    color: var(--black);
+    color: ${(props) => props.theme.colors.text};
 
     margin-bottom: 0.5rem;
   }

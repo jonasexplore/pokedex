@@ -8,7 +8,7 @@ import Category from "../Category";
 import ProgressBar from "../ProgessBar";
 
 const ContainerFixed = styled.div`
-  background: rgba(255, 255, 255, 0.85);
+  background: ${(props) => props.theme.colors.card}99;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -34,12 +34,12 @@ const Header = styled.div`
 `;
 
 const Container = styled.div`
-  background: var(--white);
+  background: ${(props) => props.theme.colors.card};
   min-width: 400px;
   padding: 2rem 1rem;
   border-radius: 0.5rem;
   margin: 1rem auto;
-  color: var(--black);
+  color: ${(props) => props.theme.colors.text};
 
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
 
@@ -63,7 +63,7 @@ const Container = styled.div`
 
   & > div > img {
     border-radius: 0.5rem;
-    background: rgb(245, 247, 250);
+    background: ${(props) => props.theme.colors.background}${(props) => props.theme.title == "dark" && "22"};
     margin-left: 0.5rem;
   }
 
@@ -73,6 +73,7 @@ const Container = styled.div`
 
   & > button {
     width: 100%;
+    margin-top: 1rem;
   }
 `;
 

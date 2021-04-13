@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../animations/like.json";

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { DataContext } from "../contexts/DataContext";
 
@@ -26,7 +26,7 @@ const SearchField = () => {
   const [searchValue, setSearchValue] = useState("");
   const { setFilterPokemons } = useContext(DataContext);
 
-  const handlerChange = (event) => {
+  const handlerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const pokemonName = event.target.value;
     setFilterPokemons(pokemonName);
     setSearchValue(pokemonName);

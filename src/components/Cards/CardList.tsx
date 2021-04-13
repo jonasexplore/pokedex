@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { DataContext } from "../../contexts/DataContext";
 import { ModalContext } from "../../contexts/ModalContext";
 import { DataFetchResponse } from "../../interfaces/DataFetch";
 import Card from "./Card";
