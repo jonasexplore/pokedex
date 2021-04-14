@@ -23,7 +23,7 @@ export const DataContext = createContext({} as DataContextInterface);
 
 export const DataProvider = ({ children }: DataProviderInterface) => {
   const [pokemons, setPokemons] = useState([] as DataFetchResponse[]);
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const [filteredPokemons, setFilteredPokemons] = useState(
     [] as DataFetchResponse[]
