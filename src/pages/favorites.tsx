@@ -3,6 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import DefaultButton from "../components/Buttons/DefaultButton";
 import CardList from "../components/Cards/CardList";
+import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import { DataContext } from "../contexts/DataContext";
 
@@ -46,23 +47,25 @@ const Favorites = () => {
   return (
     <>
       <Navbar />
-      {!filteredByFavorited.length ? (
-        <ContentCenter>
-          <img src="images/Astronaut.png" alt="" />
-          <h2>Está meio vazio por aqui!</h2>
-          <p>Procure por pokémons para adicioná-los aos seus favoritos.</p>
-          <Link href="/search">
-            <DefaultButton>Procurar pokémons</DefaultButton>
-          </Link>
-        </ContentCenter>
-      ) : (
-        <Content>
-          <Description>{`Olá, você tem ${countFavorited
-            .toString()
-            .padStart(2, "0")} pokémon salvo!`}</Description>
-          <CardList pokemonsList={filteredByFavorited} />
-        </Content>
-      )}
+      <Container>
+        {!filteredByFavorited.length ? (
+          <ContentCenter>
+            <img src="images/Astronaut.png" alt="" />
+            <h2>Está meio vazio por aqui!</h2>
+            <p>Procure por pokémons para adicioná-los aos seus favoritos.</p>
+            <Link href="/search">
+              <DefaultButton>Procurar pokémons</DefaultButton>
+            </Link>
+          </ContentCenter>
+        ) : (
+          <Content>
+            <Description>{`Olá, você tem ${countFavorited
+              .toString()
+              .padStart(2, "0")} pokémon salvo!`}</Description>
+            <CardList pokemonsList={filteredByFavorited} />
+          </Content>
+        )}
+      </Container>
     </>
   );
 };
