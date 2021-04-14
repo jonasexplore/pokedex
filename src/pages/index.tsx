@@ -13,23 +13,37 @@ const Container = styled.div`
   background: url(images/light-1.png) no-repeat;
   background-size: contain;
   background-position: right top;
+
+  @media (max-width: 1190px) {
+    background: ${(props) => props.theme.colors.background};
+    justify-content: center;
+  }
 `;
 
 const SectionLogin = styled.section`
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  margin-left: 3rem;
 
-  margin-left: 5rem;
   max-width: 25%;
 
   & > img {
     max-width: 206px;
-    margin-bottom: 3rem;
+    margin: 1rem 0;
   }
 
   & > h1 {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 540px) {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 1190px) {
+    margin: 2rem;
+    max-width: 100%;
   }
 `;
 

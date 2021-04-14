@@ -12,6 +12,7 @@ const ContentCenter = styled(Container)`
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  margin: 0 1rem;
 
   h2 {
     color: ${(props) => props.theme.colors.text};
@@ -20,13 +21,20 @@ const ContentCenter = styled(Container)`
   p {
     margin: 1rem 0;
   }
+
+  @media (max-width: 540px) {
+    & > img {
+      width: 100%;
+    }
+  }
 `;
 
-const Content = styled(Container)`
+const Content = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin: 0 2rem;
 `;
 
 const Description = styled.h2`

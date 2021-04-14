@@ -9,9 +9,18 @@ import { useState } from "react";
 const Button = styled.button`
   border: 1px solid ${(props) => props.theme.colors.text};
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 3rem;
   color: ${(props) => props.theme.colors.text};
-  background: transparent;
+  background: ${(props) => props.theme.colors.background};
+
+  @media (max-width: 540px) {
+    margin-left: 2.1rem;
+  }
+
+  @media (max-width: 280px) {
+    margin-left: 1.4rem;
+  }
 `;
 
 function MyApp({ Component, pageProps }) {
@@ -28,13 +37,14 @@ function MyApp({ Component, pageProps }) {
       <ModalProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+
+          <Component {...pageProps} />
           <Button
             onClick={toggleTheme}
-            style={{ position: "fixed", bottom: "5%", left: "5%" }}
+            style={{ position: "fixed", bottom: "3%", left: "0" }}
           >
             Mudar tema
           </Button>
-          <Component {...pageProps} />
         </ThemeProvider>
       </ModalProvider>
     </DataProvider>
