@@ -7,12 +7,11 @@ import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import { DataContext } from "../contexts/DataContext";
 
-const ContentCenter = styled(Container)`
+const ContentCenter = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  margin: 0 1rem;
 
   h2 {
     color: ${(props) => props.theme.colors.text};
@@ -23,6 +22,7 @@ const ContentCenter = styled(Container)`
   }
 
   @media (max-width: 540px) {
+    margin: 0 1rem;
     & > img {
       width: 100%;
     }
