@@ -4,13 +4,19 @@ import { DataContext } from "../contexts/DataContext";
 
 const Container = styled.div`
   position: relative;
-  width: 60%;
+  width: 75%;
 
   & > img {
     cursor: pointer;
     position: absolute;
     left: 95%;
     top: 30%;
+  }
+
+  @media (max-width: 540px) {
+    & > img {
+      left: 87%;
+    }
   }
 `;
 

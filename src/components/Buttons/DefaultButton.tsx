@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const DefaultButton = styled.button`
   border-radius: 0.5rem;
-  border: 1px solid ${(props) => props.theme.colors.card};
+  border: 1px solid ${(props) => props.theme.colors.text};
   background: transparent;
 
   cursor: pointer;

@@ -41,7 +41,7 @@ const Container = styled.div`
   margin: 1rem auto;
   color: ${(props) => props.theme.colors.text};
 
-  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.3);
 
   & > h2 {
     margin: 1rem 0;
@@ -74,6 +74,10 @@ const Container = styled.div`
   & > button {
     width: 100%;
     margin-top: 1rem;
+  }
+
+  @media (max-width: 540px) {
+    min-width: auto;
   }
 `;
 

@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   margin-bottom: 2rem;
 `;

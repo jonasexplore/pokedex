@@ -16,6 +16,10 @@ const Container = styled.div`
   & > ul {
     display: flex;
     list-style-type: none;
+
+    @media (max-width: 860px) {
+      flex-wrap: wrap;
+    }
   }
 
   & > ul li {
@@ -31,6 +35,10 @@ const Container = styled.div`
     &.${"active"} {
       background: var(--yellow);
       border-color: var(--yellow);
+    }
+
+    @media (max-width: 860px) {
+      margin-bottom: 1rem;
     }
   }
 `;

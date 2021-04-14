@@ -36,6 +36,15 @@ const Nav = styled.nav`
     li a:hover {
       border-bottom: 3px solid ${(props) => props.theme.colors.secundary};
     }
+
+    @media (max-width: 540px) {
+      flex-flow: column wrap;
+    }
+  }
+
+  @media (max-width: 540px) {
+    height: auto;
+    flex-flow: column wrap;
   }
 `;
 
@@ -52,8 +61,9 @@ const Item = styled.li`
   &.${`favorite`} {
     position: relative;
   }
-  @media (max-width: 520px) {
+  @media (max-width: 540px) {
     margin-left: 2rem;
+    margin: 1rem 0;
   }
 `;
 

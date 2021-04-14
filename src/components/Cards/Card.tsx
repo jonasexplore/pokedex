@@ -9,8 +9,8 @@ import Category from "../Category";
 const Container = styled.div`
   background: ${(props) => props.theme.colors.card};
   border-radius: 0.5rem;
-  margin-right: 2rem;
-  margin-top: 2rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
 
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
 
@@ -27,6 +27,10 @@ const Container = styled.div`
     color: ${(props) => props.theme.colors.text};
 
     margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 540px) {
+    justify-content: space-between;
   }
 `;
 

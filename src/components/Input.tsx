@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Input = styled.input`
+  width: 100%;
   background: transparent;
   border: 1px solid var(--gray-line);
   padding: 0.8rem 1rem;
