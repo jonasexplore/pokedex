@@ -3,7 +3,6 @@ import { useContext } from "react";
 import styled from "styled-components";
 import DefaultButton from "../components/Buttons/DefaultButton";
 import CardList from "../components/Cards/CardList";
-import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import { DataContext } from "../contexts/DataContext";
 
