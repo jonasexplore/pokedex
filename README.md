@@ -1,41 +1,117 @@
-# TypeScript Next.js example
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/fallying/pokedex?color=%2304D361">
 
-## Deploy your own
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/fallying/pokedex">
+  
+  <a href="https://github.com/fallying/pokedex/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/fallying/pokedex">
+  </a>
+    
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+   <a href="https://github.com/fallying/pokedex/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/fallying/pokedex?style=social">
+  </a>
+</p>
+<p align="center">
+  <img align="center" alt="pikachu" width=64 src="https://emojis.slackmojis.com/emojis/images/1553689407/5541/pikachu.gif?1553689407">
+</p>
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+<h4 align="center"> 
+	Pokedéx
+</h4>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript&project-name=with-typescript&repository-name=with-typescript)
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-funcionalidades">Funcionalidades</a> •
+ <a href="#-layout">Layout</a> • 
+ <a href="#-como-executar-o-projeto">Como executar</a> • 
+ <a href="#-tecnologias">Tecnologias</a> • 
+ <a href="#-contribuidores">Contribuidores</a> • 
+ <a href="#-autor">Autor</a> • 
+ <a href="#user-content--licença">Licença</a>
+</p>
 
-## How to use it?
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## 💻 Sobre o projeto
+
+Pokedéx é um dos desafios de front-end da Brisalabs que tem o objetivo de testar os conhecimentos voltados a componentização, gerenciamento de estados, requisições a API externa e outros.
+
+
+Projeto desenvolvido e oferecido pela [Brisalabs](https://github.com/brisalabs).
+
+---
+
+## ⚙️ Funcionalidades
+
+- [x] Tela inicial de login (Demonstrativa).
+- [x] Listagem de pokemóns limitados a 20.
+- [x] Filtros de busca por categória e nome do pokemón.
+- [x] Visualização detalhada de cada pokemón.
+- [x] É possível favoritar um pokemón e encontrá-lo na página de favoritos.
+- [x] Tema escuro (Dark mode)
+
+
+---
+
+## 🎨 Layout
+
+O layout da aplicação está disponível no Figma:
+
+<a href="https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta?node-id=136%3A546">
+  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
+</a>
+
+---
+
+## 🚀 Como executar o projeto
+
+
+💡Tanto o Frontend quanto o Mobile precisam que o Backend esteja sendo executado para funcionar.
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+#### 🧭 Rodando a aplicação
 
 ```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+# Clone este repositório
+$ git clone https://github.com/FalLying/pokedex.git
 
-## Notes
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd pokedex
 
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
+# Instale as dependências
+$ npm install
 
-```
-npm install --save-dev typescript
-```
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
 
-To enable TypeScript's features, we install the type declarations for React and Node.
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
 ```
-npm install --save-dev @types/react @types/react-dom @types/node
-```
 
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
+---
 
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
+## 🛠 Tecnologias
 
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+As seguintes ferramentas foram usadas na construção do projeto:
+
+#### **Front-end**  ([React](https://reactjs.org/)  +  [TypeScript](https://www.typescriptlang.org/))
+
+-   **[styled-components](https://styled-components.com/)**
+-   **[Nextjs](https://nextjs.org/)**
+-   **[React-content-loader](https://www.npmjs.com/package/react-content-loader)**
+-   **[React-Lottie](https://lottiefiles.com/)**
+
+> Veja o arquivo  [package.json](https://github.com/fallying/pokedex/blob/master/package.json)
+> 
+---
+
+## 📝 Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
