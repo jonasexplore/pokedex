@@ -58,8 +58,8 @@ Projeto desenvolvido e oferecido pela [Brisalabs](https://github.com/brisalabs).
 
 O layout da aplicação está disponível no Figma:
 
-<a href="https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta?node-id=136%3A546">
-  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
+<a href="https://www.figma.com/file/o91t40vYqx9cmQL4nvf9PC/Desafio-Dev-Brisalabs?node-id=6%3A44">
+  <img alt="Made by Brisalabs" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
 </a>
 
 ---
