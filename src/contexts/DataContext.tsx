@@ -87,7 +87,7 @@ export const DataProvider = ({ children }: DataProviderInterface) => {
   useEffect(() => {
     const getData = async () => {
       const response: { results: Pokemon[] } = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=20&offset=20"
+        "https://pokeapi.co/api/v2/pokemon?limit=50&offset=20"
       ).then((data) => data.json());
 
       let newPokemon: DataFetchResponse[] = [];

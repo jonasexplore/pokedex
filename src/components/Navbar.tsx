@@ -99,6 +99,9 @@ const Navbar = () => {
           <Item className={`${router.asPath == "/home" && "active"}`}>
             <Link href="/home">Ver todos</Link>
           </Item>
+          <Item className={`${router.asPath == "/graph" && "active"}`}>
+            <Link href="/graph">Análise</Link>
+          </Item>
         </ul>
         <ExitButton>Sair</ExitButton>
       </Nav>
